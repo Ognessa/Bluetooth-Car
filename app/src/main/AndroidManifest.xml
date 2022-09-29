@@ -2,6 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.onix.internship">
 
+    <!-- Request legacy Bluetooth permissions on older devices. -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
     <application
         android:name=".InternshipApp"
         android:allowBackup="false"
@@ -11,10 +22,10 @@
         android:theme="@style/Theme.internship">
         <activity
             android:name=".ui.main.MainScreen"
-            android:screenOrientation="sensor"
             android:configChanges="orientation"
-            android:windowSoftInputMode="stateHidden"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="sensor"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

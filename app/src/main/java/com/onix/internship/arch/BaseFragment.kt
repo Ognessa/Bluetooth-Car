@@ -8,6 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
 import com.google.android.material.snackbar.Snackbar
 import com.onix.internship.arch.ext.hideKeyboard
 
@@ -39,10 +40,15 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val resId: I
     private fun onBaseObservers() {
         viewModel.loading.observe(viewLifecycleOwner) { hideKeyboard() }
         viewModel.massageEvent.observe(viewLifecycleOwner) { showSnack(it) }
+        viewModel.navigate.observe(viewLifecycleOwner, ::navigate)
     }
 
     protected fun showSnack(msg: String) {
         Snackbar.make(this.requireView(), msg, Snackbar.LENGTH_SHORT).show()
+    }
+
+    protected fun navigate(direction: NavDirections) {
+        navigate(direction)
     }
 
 }
