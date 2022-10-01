@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:circularflow_radiusInDP="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.controller.ControllerFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rightControl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_buttons_pad"
+            android:padding="@dimen/padding_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.helper.widget.CircularFlow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:circularflow_angles="0,90,180,270"
+                app:circularflow_defaultRadius="@dimen/control_radius"
+                app:constraint_referenced_ids="buttonA,buttonB,buttonC,buttonD" />
+
+            <View
+                android:id="@+id/buttonA"
+                android:layout_width="@dimen/circle_button_size"
+                android:layout_height="@dimen/circle_button_size"
+                android:background="@drawable/bg_circle_button" />
+
+            <View
+                android:id="@+id/buttonB"
+                android:layout_width="@dimen/circle_button_size"
+                android:layout_height="@dimen/circle_button_size"
+                android:background="@drawable/bg_circle_button" />
+
+            <View
+                android:id="@+id/buttonC"
+                android:layout_width="@dimen/circle_button_size"
+                android:layout_height="@dimen/circle_button_size"
+                android:background="@drawable/bg_circle_button" />
+
+            <View
+                android:id="@+id/buttonD"
+                android:layout_width="@dimen/circle_button_size"
+                android:layout_height="@dimen/circle_button_size"
+                android:background="@drawable/bg_circle_button" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/leftControl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_buttons_pad"
+            android:padding="@dimen/padding_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.helper.widget.CircularFlow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:circularflow_angles="0,90,180,270"
+                app:circularflow_defaultRadius="@dimen/control_radius"
+                app:constraint_referenced_ids="buttonE,buttonF,buttonK,buttonL" />
+
+            <View
+                android:id="@+id/buttonE"
+                android:layout_width="@dimen/circle_button_size"
+                android:layout_height="@dimen/circle_button_size"
+                android:background="@drawable/bg_circle_button" />
+
+            <View
+                android:id="@+id/buttonF"
+                android:layout_width="@dimen/circle_button_size"
+                android:layout_height="@dimen/circle_button_size"
+                android:background="@drawable/bg_circle_button" />
+
+            <View
+                android:id="@+id/buttonK"
+                android:layout_width="@dimen/circle_button_size"
+                android:layout_height="@dimen/circle_button_size"
+                android:background="@drawable/bg_circle_button" />
+
+            <View
+                android:id="@+id/buttonL"
+                android:layout_width="@dimen/circle_button_size"
+                android:layout_height="@dimen/circle_button_size"
+                android:background="@drawable/bg_circle_button" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

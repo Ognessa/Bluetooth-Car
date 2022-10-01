@@ -2,7 +2,17 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/home"
-    app:startDestination="@id/devicesFragment">
+    app:startDestination="@id/controllerFragment">
+
+    <fragment
+        android:id="@+id/controllerFragment"
+        android:name="com.onix.internship.ui.controller.ControllerFragment"
+        android:label="ControllerFragment">
+
+        <action
+            android:id="@+id/action_controllerFragment_to_devicesFragment"
+            app:destination="@id/devicesFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/devicesFragment"
