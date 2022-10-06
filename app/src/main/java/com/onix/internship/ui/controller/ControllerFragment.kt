@@ -11,10 +11,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ControllerFragment : BaseFragment<FragmentControllerBinding>(R.layout.fragment_controller) {
     override val viewModel: ControllerViewModel by viewModel()
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupNavigation()
+        setupClickEvents()
+    }
 
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setupClickEvents() {
         binding.buttonA.setOnTouchListener { v, event ->
             viewModel.onButtonTouchListener(v, event, "A")
         }
@@ -38,6 +42,15 @@ class ControllerFragment : BaseFragment<FragmentControllerBinding>(R.layout.frag
         }
         binding.buttonL.setOnTouchListener { v, event ->
             viewModel.onButtonTouchListener(v, event, "L")
+        }
+    }
+
+    private fun setupNavigation() {
+        binding.deviceTitleContainer.setOnClickListener {
+            navigate(ControllerFragmentDirections.actionControllerFragmentToDevicesFragment())
+        }
+        binding.settingsTitleContainer.setOnClickListener {
+            showSnack("Add click listener")
         }
     }
 

@@ -19,7 +19,7 @@ fun Context.hideKeyboard(view: View) {
     inputMethodManager?.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
-fun Fragment.navigate(@IdRes resId: Int, args: Bundle? = null, clearStack: Boolean = false) {
+fun Fragment.navigation(@IdRes resId: Int, args: Bundle? = null, clearStack: Boolean = false) {
     findNavController().apply {
         if (clearStack) {
             popBackStack()
@@ -27,6 +27,6 @@ fun Fragment.navigate(@IdRes resId: Int, args: Bundle? = null, clearStack: Boole
     }.navigate(resId, args)
 }
 
-fun Fragment.navigate(navDirections: NavDirections) {
+fun Fragment.navigation(navDirections: NavDirections) {
     findNavController().navigate(navDirections)
 }

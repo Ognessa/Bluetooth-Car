@@ -17,4 +17,9 @@
         <!-- Customize your theme here. -->
         <item name="android:textSize">@dimen/text_18</item>
     </style>
+
+    <style name="ToolbarTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_20</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>

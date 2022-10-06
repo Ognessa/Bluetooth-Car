@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import com.google.android.material.snackbar.Snackbar
 import com.onix.internship.arch.ext.hideKeyboard
+import com.onix.internship.arch.ext.navigation
 
 abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val resId: Int) : Fragment() {
 
@@ -48,7 +49,7 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val resId: I
     }
 
     protected fun navigate(direction: NavDirections) {
-        navigate(direction)
+        navigation(direction)
     }
 
 }
