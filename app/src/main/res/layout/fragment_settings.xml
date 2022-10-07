@@ -3,33 +3,127 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.settings.SettingsFragment">
+        android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/controllerLeftLayout"
-            layout="@layout/controller_layout_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_5"
+            tools:context=".ui.settings.SettingsFragment">
 
-        <include
-            android:id="@+id/controllerRightLayout"
-            layout="@layout/controller_layout_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/controllerLeftLayout" />
+            <include
+                android:id="@+id/controllerLeftLayout"
+                layout="@layout/controller_layout_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <SeekBar
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@+id/controllerRightLayout"
-            app:layout_constraintStart_toStartOf="@+id/controllerRightLayout"
-            app:layout_constraintTop_toBottomOf="@+id/controllerRightLayout" />
+            <LinearLayout
+                android:id="@+id/leftControllerDataContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_5"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/controllerLeftLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/controllerLeftLayout"
+                app:layout_constraintTop_toTopOf="@+id/controllerLeftLayout">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <include
+                android:id="@+id/controllerRightLayout"
+                layout="@layout/controller_layout_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_40"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/controllerLeftLayout" />
+
+            <LinearLayout
+                android:id="@+id/rightControllerDataContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_5"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/controllerRightLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/controllerRightLayout"
+                app:layout_constraintTop_toTopOf="@+id/controllerRightLayout">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_70"
+                app:layout_constraintEnd_toEndOf="@+id/controllerRightLayout"
+                app:layout_constraintStart_toStartOf="@+id/controllerRightLayout"
+                app:layout_constraintTop_toBottomOf="@+id/controllerRightLayout" />
+
+            <LinearLayout
+                android:id="@+id/seekBarDataContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_5"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/seekBar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/seekBar"
+                app:layout_constraintTop_toTopOf="@+id/seekBar">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/saveSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_40"
+                android:layout_marginBottom="@dimen/margin_5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/seekBarDataContainer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

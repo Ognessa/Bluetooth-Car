@@ -9,7 +9,7 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel { DevicesViewModel() }
-    viewModel { ControllerViewModel() }
+    viewModel { ControllerViewModel(get()) }
     viewModel { SettingsViewModel() }
     viewModel { MainViewModel() }
 }

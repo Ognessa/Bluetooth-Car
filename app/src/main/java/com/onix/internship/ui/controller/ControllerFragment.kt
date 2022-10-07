@@ -20,16 +20,16 @@ class ControllerFragment : BaseFragment<FragmentControllerBinding>(R.layout.frag
     @SuppressLint("ClickableViewAccessibility")
     private fun setupClickEvents() {
         binding.buttonA.setOnTouchListener { v, event ->
-            viewModel.onButtonTouchListener(v, event, "A")
+            viewModel.onButtonTouchListener(v, event, "f")
         }
         binding.buttonB.setOnTouchListener { v, event ->
-            viewModel.onButtonTouchListener(v, event, "B")
+            viewModel.onButtonTouchListener(v, event, "r")
         }
         binding.buttonC.setOnTouchListener { v, event ->
-            viewModel.onButtonTouchListener(v, event, "C")
+            viewModel.onButtonTouchListener(v, event, "b")
         }
         binding.buttonD.setOnTouchListener { v, event ->
-            viewModel.onButtonTouchListener(v, event, "D")
+            viewModel.onButtonTouchListener(v, event, "l")
         }
         binding.buttonE.setOnTouchListener { v, event ->
             viewModel.onButtonTouchListener(v, event, "E")
@@ -50,7 +50,7 @@ class ControllerFragment : BaseFragment<FragmentControllerBinding>(R.layout.frag
             navigate(ControllerFragmentDirections.actionControllerFragmentToDevicesFragment())
         }
         binding.settingsTitleContainer.setOnClickListener {
-            showSnack("Add click listener")
+            navigate(ControllerFragmentDirections.actionControllerFragmentToSettingsFragment())
         }
     }
 

@@ -11,22 +11,20 @@ import android.view.View
 import com.onix.internship.R
 import com.onix.internship.arch.BaseFragment
 import com.onix.internship.databinding.FragmentDevicesBinding
+import com.onix.internship.repository.BluetoothConnectedDeviceRepository
 import com.onix.internship.ui.devices.adapter.DeviceAdapter
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.io.DataOutputStream
-import java.util.*
 
 
 class DevicesFragment : BaseFragment<FragmentDevicesBinding>(R.layout.fragment_devices) {
 
     override val viewModel: DevicesViewModel by viewModel()
 
+    private val bluetoothRepository: BluetoothConnectedDeviceRepository by inject()
+
     private lateinit var bluetoothAdapter: BluetoothAdapter
     private lateinit var socket: BluetoothSocket
-
-    private var myUUID: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
-
-    //TODO finish when get my car
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -65,8 +63,8 @@ class DevicesFragment : BaseFragment<FragmentDevicesBinding>(R.layout.fragment_d
 
             bluetoothAdapter.cancelDiscovery()
             socket.connect()
+            bluetoothRepository.socket = socket
 
-            val outS = DataOutputStream(socket.outputStream)
             result = "Connected"
         } catch (e: Exception) {
             e.printStackTrace()
