@@ -3,6 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.onix.internship.ui.settings.SettingsViewModel" />
+
+        <variable
+            name="model"
+            type="com.onix.internship.ui.settings.SettingsModel" />
+    </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -13,13 +24,23 @@
             android:layout_margin="@dimen/margin_5"
             tools:context=".ui.settings.SettingsFragment">
 
+            <TextView
+                android:id="@+id/leftControllerTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5"
+                android:text="Left controller"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <include
                 android:id="@+id/controllerLeftLayout"
                 layout="@layout/controller_layout_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/leftControllerTitle" />
 
             <LinearLayout
                 android:id="@+id/leftControllerDataContainer"
@@ -33,30 +54,51 @@
                 app:layout_constraintTop_toTopOf="@+id/controllerLeftLayout">
 
                 <EditText
+                    android:id="@+id/aValue"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:hint="A value"
+                    android:text="@={model.a_value}" />
 
                 <EditText
+                    android:id="@+id/bValue"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:hint="B value"
+                    android:text="@={model.b_value}" />
 
                 <EditText
+                    android:id="@+id/cValue"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:hint="C value"
+                    android:text="@={model.c_value}" />
 
                 <EditText
+                    android:id="@+id/dValue"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:hint="D value"
+                    android:text="@={model.d_value}" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/rightControllerTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5"
+                android:text="Right controller"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/controllerLeftLayout" />
 
             <include
                 android:id="@+id/controllerRightLayout"
                 layout="@layout/controller_layout_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_40"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/controllerLeftLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/rightControllerTitle" />
 
             <LinearLayout
                 android:id="@+id/rightControllerDataContainer"
@@ -70,20 +112,32 @@
                 app:layout_constraintTop_toTopOf="@+id/controllerRightLayout">
 
                 <EditText
+                    android:id="@+id/eValue"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:hint="E value"
+                    android:text="@={model.e_value}" />
 
                 <EditText
+                    android:id="@+id/fValue"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:hint="F value"
+                    android:text="@={model.f_value}" />
 
                 <EditText
+                    android:id="@+id/kValue"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:hint="K value"
+                    android:text="@={model.k_value}" />
 
                 <EditText
+                    android:id="@+id/lValue"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:hint="L value"
+                    android:text="@={model.l_value}" />
             </LinearLayout>
 
             <SeekBar
@@ -107,12 +161,18 @@
                 app:layout_constraintTop_toTopOf="@+id/seekBar">
 
                 <EditText
+                    android:id="@+id/minValue"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:hint="MIN value"
+                    android:text="@={model.min_value}" />
 
                 <EditText
+                    android:id="@+id/maxValue"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:hint="MAX value"
+                    android:text="@={model.max_value}" />
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -121,6 +181,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_40"
                 android:layout_marginBottom="@dimen/margin_5"
+                android:onClick="@{_ -> viewModel.saveControllersData()}"
+                android:text="Save"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/seekBarDataContainer" />
 
