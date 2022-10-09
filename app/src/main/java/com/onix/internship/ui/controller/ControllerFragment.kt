@@ -50,7 +50,8 @@ class ControllerFragment : BaseFragment<FragmentControllerBinding>(R.layout.frag
             navigate(ControllerFragmentDirections.actionControllerFragmentToDevicesFragment())
         }
         binding.settingsTitleContainer.setOnClickListener {
-            navigate(ControllerFragmentDirections.actionControllerFragmentToSettingsFragment())
+            showSnack("Don`t work now")
+            //navigate(ControllerFragmentDirections.actionControllerFragmentToSettingsFragment())
         }
     }
 

@@ -30,3 +30,7 @@ fun Fragment.navigation(@IdRes resId: Int, args: Bundle? = null, clearStack: Boo
 fun Fragment.navigation(navDirections: NavDirections) {
     findNavController().navigate(navDirections)
 }
+
+fun Fragment.navigateToPrevious(){
+    findNavController().popBackStack()
+}

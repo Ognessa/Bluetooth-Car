@@ -6,6 +6,7 @@ import com.onix.internship.data.database.AppDatabase
 import com.onix.internship.entity.SettingsDBData
 
 class DataStore(context: Context) {
+
     private val db = Room.databaseBuilder(
         context.applicationContext,
         AppDatabase::class.java, "settingsdbdata"

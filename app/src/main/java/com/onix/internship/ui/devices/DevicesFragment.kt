@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.View
 import com.onix.internship.R
 import com.onix.internship.arch.BaseFragment
+import com.onix.internship.arch.ext.navigateToPrevious
 import com.onix.internship.databinding.FragmentDevicesBinding
 import com.onix.internship.repository.BluetoothConnectedDeviceRepository
 import com.onix.internship.ui.devices.adapter.DeviceAdapter
@@ -29,9 +30,6 @@ class DevicesFragment : BaseFragment<FragmentDevicesBinding>(R.layout.fragment_d
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupBluetoothAdapter()
-
-        val list = bluetoothAdapter.bondedDevices.toList()
-
         val adapter = DeviceAdapter(
             deviceClick = {
                 Thread().run {
@@ -41,6 +39,20 @@ class DevicesFragment : BaseFragment<FragmentDevicesBinding>(R.layout.fragment_d
         )
 
         binding.bluetoothDevicesList.adapter = adapter
+        updateList(adapter)
+
+        binding.arrowBack.setOnClickListener {
+            navigateToPrevious()
+        }
+
+        binding.swipeRefresh.setOnRefreshListener {
+            updateList(adapter)
+            binding.swipeRefresh.isRefreshing = false
+        }
+    }
+
+    private fun updateList(adapter: DeviceAdapter) {
+        val list = bluetoothAdapter.bondedDevices.toList()
         adapter.item = list
     }
 
@@ -56,13 +68,15 @@ class DevicesFragment : BaseFragment<FragmentDevicesBinding>(R.layout.fragment_d
     }
 
     private fun deviceConnect(device: BluetoothDevice) {
-        var result = ""
+        var result: String
 
         try {
             socket = device.createRfcommSocketToServiceRecord(device.uuids[0].uuid)
 
             bluetoothAdapter.cancelDiscovery()
             socket.connect()
+
+            bluetoothRepository.device = device
             bluetoothRepository.socket = socket
 
             result = "Connected"

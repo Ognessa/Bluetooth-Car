@@ -14,14 +14,14 @@ class SettingsViewModel(
     fun saveControllersData() {
         if (model.checkDataIsNotEmpty()) {
 
-            Log.d(
-                "DEBUG",
-                SettingsDBData(
-                    leftController = model.getLeftData(),
-                    rightController = model.getRightData(),
-                    seekBarData = model.getSeekBarData()
-                ).toString()
-            )
+//            Log.d(
+//                "DEBUG",
+//                SettingsDBData(
+//                    leftController = model.getLeftData(),
+//                    rightController = model.getRightData(),
+//                    seekBarData = model.getSeekBarData()
+//                ).toString()
+//            )
 
 //            dataStore.addNewSettings(
 //                SettingsDBData(

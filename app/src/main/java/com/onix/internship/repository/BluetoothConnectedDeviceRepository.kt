@@ -1,7 +1,9 @@
 package com.onix.internship.repository
 
+import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
 
 class BluetoothConnectedDeviceRepository {
-    var socket : BluetoothSocket? = null
+    var device: BluetoothDevice? = null
+    var socket: BluetoothSocket? = null
 }
