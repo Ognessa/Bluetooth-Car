@@ -1,38 +1,31 @@
 package com.onix.internship.ui.settings
 
-import android.util.Log
 import com.onix.internship.arch.BaseViewModel
-import com.onix.internship.data.repository.DataStore
+import com.onix.internship.data.repository.PreferenceStorage
 import com.onix.internship.entity.SettingsDBData
 
 class SettingsViewModel(
-    private val dataStore: DataStore
+    private val preferences: PreferenceStorage
 ) : BaseViewModel() {
 
     val model = SettingsModel()
 
     fun saveControllersData() {
         if (model.checkDataIsNotEmpty()) {
-
-//            Log.d(
-//                "DEBUG",
-//                SettingsDBData(
-//                    leftController = model.getLeftData(),
-//                    rightController = model.getRightData(),
-//                    seekBarData = model.getSeekBarData()
-//                ).toString()
-//            )
-
-//            dataStore.addNewSettings(
-//                SettingsDBData(
-//                    leftController = model.getLeftData(),
-//                    rightController = model.getRightData(),
-//                    seekBarData = model.getSeekBarData()
-//                )
-//            )
+            preferences.saveSettings(
+                SettingsDBData(
+                    leftController = model.getLeftData(),
+                    rightController = model.getRightData(),
+                    seekBarData = model.getSeekBarData()
+                )
+            )
         } else {
-            Log.d("DEBUG", "Fill all data")
+            showSnack("Fill all data, please!")
         }
+    }
+
+    fun getDataFromStorage(): SettingsDBData {
+        return preferences.getSettings()
     }
 
 }

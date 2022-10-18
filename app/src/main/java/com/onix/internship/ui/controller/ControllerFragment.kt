@@ -19,29 +19,31 @@ class ControllerFragment : BaseFragment<FragmentControllerBinding>(R.layout.frag
 
     @SuppressLint("ClickableViewAccessibility")
     private fun setupClickEvents() {
+        val data = viewModel.getSettingsData()
+
         binding.buttonA.setOnTouchListener { v, event ->
-            viewModel.onButtonTouchListener(v, event, "f")
+            viewModel.onButtonTouchListener(v, event, data.leftController.aValue)
         }
         binding.buttonB.setOnTouchListener { v, event ->
-            viewModel.onButtonTouchListener(v, event, "r")
+            viewModel.onButtonTouchListener(v, event, data.leftController.bValue)
         }
         binding.buttonC.setOnTouchListener { v, event ->
-            viewModel.onButtonTouchListener(v, event, "b")
+            viewModel.onButtonTouchListener(v, event, data.leftController.cValue)
         }
         binding.buttonD.setOnTouchListener { v, event ->
-            viewModel.onButtonTouchListener(v, event, "l")
+            viewModel.onButtonTouchListener(v, event, data.leftController.dValue)
         }
         binding.buttonE.setOnTouchListener { v, event ->
-            viewModel.onButtonTouchListener(v, event, "E")
+            viewModel.onButtonTouchListener(v, event, data.rightController.aValue)
         }
         binding.buttonF.setOnTouchListener { v, event ->
-            viewModel.onButtonTouchListener(v, event, "F")
+            viewModel.onButtonTouchListener(v, event, data.rightController.bValue)
         }
         binding.buttonK.setOnTouchListener { v, event ->
-            viewModel.onButtonTouchListener(v, event, "K")
+            viewModel.onButtonTouchListener(v, event, data.rightController.cValue)
         }
         binding.buttonL.setOnTouchListener { v, event ->
-            viewModel.onButtonTouchListener(v, event, "L")
+            viewModel.onButtonTouchListener(v, event, data.rightController.dValue)
         }
     }
 
@@ -50,8 +52,7 @@ class ControllerFragment : BaseFragment<FragmentControllerBinding>(R.layout.frag
             navigate(ControllerFragmentDirections.actionControllerFragmentToDevicesFragment())
         }
         binding.settingsTitleContainer.setOnClickListener {
-            showSnack("Don`t work now")
-            //navigate(ControllerFragmentDirections.actionControllerFragmentToSettingsFragment())
+            navigate(ControllerFragmentDirections.actionControllerFragmentToSettingsFragment())
         }
     }
 

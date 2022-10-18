@@ -3,10 +3,13 @@ package com.onix.internship.ui.controller
 import android.view.MotionEvent
 import android.view.View
 import com.onix.internship.arch.BaseViewModel
+import com.onix.internship.data.repository.PreferenceStorage
+import com.onix.internship.entity.SettingsDBData
 import com.onix.internship.repository.BluetoothConnectedDeviceRepository
 
 class ControllerViewModel(
-    private val repository: BluetoothConnectedDeviceRepository
+    private val repository: BluetoothConnectedDeviceRepository,
+    private val preferenceStorage: PreferenceStorage
 ) : BaseViewModel() {
 
     fun onButtonTouchListener(v: View, event: MotionEvent, signal: String): Boolean {
@@ -25,6 +28,10 @@ class ControllerViewModel(
         } else {
             showSnack("Device is not connected")
         }
+    }
+
+    fun getSettingsData(): SettingsDBData {
+        return preferenceStorage.getSettings()
     }
 
 }

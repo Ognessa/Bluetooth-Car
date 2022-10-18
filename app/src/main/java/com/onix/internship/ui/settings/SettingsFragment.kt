@@ -15,6 +15,26 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment
         super.onViewCreated(view, savedInstanceState)
         binding.model = viewModel.model
         binding.viewModel = viewModel
+        initData()
+    }
+
+    private fun initData() {
+        val data = viewModel.getDataFromStorage()
+
+        with(binding) {
+            aValue.setText(data.leftController.aValue)
+            bValue.setText(data.leftController.bValue)
+            cValue.setText(data.leftController.cValue)
+            dValue.setText(data.leftController.dValue)
+
+            eValue.setText(data.rightController.aValue)
+            fValue.setText(data.rightController.bValue)
+            kValue.setText(data.rightController.cValue)
+            lValue.setText(data.rightController.dValue)
+
+            minValue.setText(data.seekBarData.minValue)
+            maxValue.setText(data.seekBarData.maxValue)
+        }
     }
 
 }
