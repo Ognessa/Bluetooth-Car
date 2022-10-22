@@ -14,6 +14,10 @@ class ControllerFragment : BaseFragment<FragmentControllerBinding>(R.layout.frag
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupNavigation()
+    }
+
+    override fun onResume() {
+        super.onResume()
         setupClickEvents()
     }
 

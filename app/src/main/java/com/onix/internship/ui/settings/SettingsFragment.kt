@@ -15,6 +15,10 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment
         super.onViewCreated(view, savedInstanceState)
         binding.model = viewModel.model
         binding.viewModel = viewModel
+    }
+
+    override fun onResume() {
+        super.onResume()
         initData()
     }
 
@@ -36,5 +40,4 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment
             maxValue.setText(data.seekBarData.maxValue)
         }
     }
-
 }

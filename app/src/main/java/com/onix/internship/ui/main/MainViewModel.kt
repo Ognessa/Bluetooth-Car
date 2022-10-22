@@ -9,8 +9,9 @@ class MainViewModel(
 ) : BaseViewModel() {
 
     init {
-        if (preferences.checkSettingsExists())
+        if (preferences.checkSettingsExists()) {
             preferences.saveSettings(SettingsDBData())
+        }
     }
 
 }
