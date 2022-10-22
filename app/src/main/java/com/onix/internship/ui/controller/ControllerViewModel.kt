@@ -15,12 +15,12 @@ class ControllerViewModel(
     fun onButtonTouchListener(v: View, event: MotionEvent, signal: String): Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> sendSignal(signal.toByteArray())
-            MotionEvent.ACTION_UP -> sendSignal("s".toByteArray())
+            MotionEvent.ACTION_UP -> sendSignal(getSettingsData().stop.toByteArray())
         }
         return true
     }
 
-    private fun sendSignal(signal: ByteArray) {
+    fun sendSignal(signal: ByteArray) {
         val s = repository.socket
         if (s != null && s.isConnected) {
             s.outputStream.write(signal)

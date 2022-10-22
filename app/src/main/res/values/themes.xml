@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.internship" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/dark_purple</item>
+        <item name="colorPrimaryVariant">@color/dark_purple</item>
         <item name="colorOnPrimary">@color/white</item>
 
         <!-- Secondary brand color. -->
@@ -19,8 +19,14 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="ButtonsTextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/light_purple</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">35sp</item>
+    </style>
+
     <style name="ToolbarTextView" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">@dimen/text_20</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/light_purple</item>
     </style>
 </resources>

@@ -1,7 +1,7 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="@dimen/bluetooth_icon_40"
     android:height="@dimen/bluetooth_icon_40"
-    android:tint="#FFFFFF"
+    android:tint="@color/light_purple"
     android:viewportWidth="24"
     android:viewportHeight="24">
     <path

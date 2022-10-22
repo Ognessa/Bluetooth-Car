@@ -6,5 +6,6 @@ import com.onix.internship.entity.controllers.SeekBarData
 data class SettingsDBData(
     var leftController: ControllerData = ControllerData(),
     var rightController: ControllerData = ControllerData(),
+    var stop: String = "s",
     var seekBarData: SeekBarData = SeekBarData()
 )

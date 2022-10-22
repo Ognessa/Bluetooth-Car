@@ -88,29 +88,37 @@
                 app:circularflow_defaultRadius="@dimen/control_radius"
                 app:constraint_referenced_ids="buttonA,buttonB,buttonC,buttonD" />
 
-            <View
+            <TextView
                 android:id="@+id/buttonA"
+                style="@style/ButtonsTextView"
                 android:layout_width="@dimen/circle_button_size"
                 android:layout_height="@dimen/circle_button_size"
-                android:background="@drawable/bg_circle_button" />
+                android:background="@drawable/bg_circle_button"
+                android:text="A" />
 
-            <View
+            <TextView
                 android:id="@+id/buttonB"
+                style="@style/ButtonsTextView"
                 android:layout_width="@dimen/circle_button_size"
                 android:layout_height="@dimen/circle_button_size"
-                android:background="@drawable/bg_circle_button" />
+                android:background="@drawable/bg_circle_button"
+                android:text="B" />
 
-            <View
+            <TextView
                 android:id="@+id/buttonC"
+                style="@style/ButtonsTextView"
                 android:layout_width="@dimen/circle_button_size"
                 android:layout_height="@dimen/circle_button_size"
-                android:background="@drawable/bg_circle_button" />
+                android:background="@drawable/bg_circle_button"
+                android:text="C" />
 
-            <View
+            <TextView
                 android:id="@+id/buttonD"
+                style="@style/ButtonsTextView"
                 android:layout_width="@dimen/circle_button_size"
                 android:layout_height="@dimen/circle_button_size"
-                android:background="@drawable/bg_circle_button" />
+                android:background="@drawable/bg_circle_button"
+                android:text="D" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -132,29 +140,37 @@
                 app:circularflow_defaultRadius="@dimen/control_radius"
                 app:constraint_referenced_ids="buttonE,buttonF,buttonK,buttonL" />
 
-            <View
+            <TextView
                 android:id="@+id/buttonE"
+                style="@style/ButtonsTextView"
                 android:layout_width="@dimen/circle_button_size"
                 android:layout_height="@dimen/circle_button_size"
-                android:background="@drawable/bg_circle_button" />
+                android:background="@drawable/bg_circle_button"
+                android:text="A" />
 
-            <View
+            <TextView
                 android:id="@+id/buttonF"
+                style="@style/ButtonsTextView"
                 android:layout_width="@dimen/circle_button_size"
                 android:layout_height="@dimen/circle_button_size"
-                android:background="@drawable/bg_circle_button" />
+                android:background="@drawable/bg_circle_button"
+                android:text="B" />
 
-            <View
+            <TextView
                 android:id="@+id/buttonK"
+                style="@style/ButtonsTextView"
                 android:layout_width="@dimen/circle_button_size"
                 android:layout_height="@dimen/circle_button_size"
-                android:background="@drawable/bg_circle_button" />
+                android:background="@drawable/bg_circle_button"
+                android:text="C" />
 
-            <View
+            <TextView
                 android:id="@+id/buttonL"
+                style="@style/ButtonsTextView"
                 android:layout_width="@dimen/circle_button_size"
                 android:layout_height="@dimen/circle_button_size"
-                android:background="@drawable/bg_circle_button" />
+                android:background="@drawable/bg_circle_button"
+                android:text="D" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -162,10 +178,16 @@
             android:id="@+id/seekBar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/leftControl"
-            app:layout_constraintEnd_toStartOf="@+id/rightControl"
-            app:layout_constraintStart_toEndOf="@+id/leftControl"
-            app:layout_constraintTop_toBottomOf="@+id/materialToolbar" />
+            android:clickable="false"
+            android:progressDrawable="@drawable/seekbar_style"
+            android:splitTrack="false"
+            android:thumb="@drawable/seekbar_thumb"
+            app:layout_constraintBottom_toTopOf="@+id/rightControl"
+            app:layout_constraintEnd_toStartOf="@+id/leftControl"
+            app:layout_constraintStart_toEndOf="@+id/rightControl"
+            app:layout_constraintTop_toBottomOf="@+id/materialToolbar"
+            tools:max="10"
+            tools:progress="3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

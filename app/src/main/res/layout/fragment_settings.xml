@@ -30,13 +30,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_5"
                 android:text="Left controller"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <include
                 android:id="@+id/controllerLeftLayout"
-                layout="@layout/controller_layout_left"
+                layout="@layout/controller_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
@@ -88,13 +90,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_5"
                 android:text="Right controller"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/controllerLeftLayout" />
 
             <include
                 android:id="@+id/controllerRightLayout"
-                layout="@layout/controller_layout_right"
+                layout="@layout/controller_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
@@ -115,28 +119,28 @@
                     android:id="@+id/eValue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="E value"
+                    android:hint="A value"
                     android:text="@={model.e_value}" />
 
                 <EditText
                     android:id="@+id/fValue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="F value"
+                    android:hint="B value"
                     android:text="@={model.f_value}" />
 
                 <EditText
                     android:id="@+id/kValue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="K value"
+                    android:hint="C value"
                     android:text="@={model.k_value}" />
 
                 <EditText
                     android:id="@+id/lValue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="L value"
+                    android:hint="D value"
                     android:text="@={model.l_value}" />
             </LinearLayout>
 
@@ -145,6 +149,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_70"
+                android:clickable="false"
+                android:max="10"
+                android:progress="3"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
+                android:thumb="@drawable/seekbar_thumb"
                 app:layout_constraintEnd_toEndOf="@+id/controllerRightLayout"
                 app:layout_constraintStart_toStartOf="@+id/controllerRightLayout"
                 app:layout_constraintTop_toBottomOf="@+id/controllerRightLayout" />
@@ -165,6 +175,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="MIN value"
+                    android:inputType="number"
                     android:text="@={model.min_value}" />
 
                 <EditText
@@ -172,6 +183,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="MAX value"
+                    android:inputType="number"
                     android:text="@={model.max_value}" />
             </LinearLayout>
 
@@ -181,8 +193,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_40"
                 android:layout_marginBottom="@dimen/margin_5"
+                android:backgroundTint="@color/dark_purple"
                 android:onClick="@{_ -> viewModel.saveControllersData()}"
                 android:text="Save"
+                android:textColor="@color/light_purple"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/seekBarDataContainer" />
 

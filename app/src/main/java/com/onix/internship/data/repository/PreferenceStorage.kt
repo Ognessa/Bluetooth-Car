@@ -19,6 +19,8 @@ class PreferenceStorage constructor(private val context: Context) {
     private val RIGHT_CONTROLLER_C = "right_controller_c"
     private val RIGHT_CONTROLLER_D = "right_controller_d"
 
+    private val STOP = "stop"
+
     private val SEEK_BAR_MIN = "seek_bar_min"
     private val SEEK_BAR_MAX = "seek_bar_max"
 
@@ -32,6 +34,8 @@ class PreferenceStorage constructor(private val context: Context) {
         save(RIGHT_CONTROLLER_B, settings.rightController.bValue)
         save(RIGHT_CONTROLLER_C, settings.rightController.cValue)
         save(RIGHT_CONTROLLER_D, settings.rightController.dValue)
+
+        save(STOP, settings.stop)
 
         save(SEEK_BAR_MIN, settings.seekBarData.minValue)
         save(SEEK_BAR_MAX, settings.seekBarData.maxValue)
@@ -51,6 +55,7 @@ class PreferenceStorage constructor(private val context: Context) {
                 cValue = getString(RIGHT_CONTROLLER_C) ?: "",
                 dValue = getString(RIGHT_CONTROLLER_D) ?: ""
             ),
+            stop = getString(STOP) ?: "",
             seekBarData = SeekBarData(
                 minValue = getString(SEEK_BAR_MIN) ?: "",
                 maxValue = getString(SEEK_BAR_MAX) ?: ""
@@ -67,6 +72,7 @@ class PreferenceStorage constructor(private val context: Context) {
                 getString(RIGHT_CONTROLLER_B).isNullOrEmpty() &&
                 getString(RIGHT_CONTROLLER_C).isNullOrEmpty() &&
                 getString(RIGHT_CONTROLLER_D).isNullOrEmpty() &&
+                getString(STOP).isNullOrEmpty() &&
                 getString(SEEK_BAR_MIN).isNullOrEmpty() &&
                 getString(SEEK_BAR_MAX).isNullOrEmpty()
     }
