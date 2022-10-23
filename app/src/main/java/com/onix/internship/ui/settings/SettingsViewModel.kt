@@ -14,14 +14,19 @@ class SettingsViewModel(
 
     fun saveControllersData() {
         if (model.checkDataIsNotEmpty()) {
-            preferences.saveSettings(
-                SettingsDBData(
-                    leftController = model.getLeftData(),
-                    rightController = model.getRightData(),
-                    seekBarData = model.getSeekBarData()
+            if (model.checkDataIsCorrect()) {
+                preferences.saveSettings(
+                    SettingsDBData(
+                        leftController = model.getLeftData(),
+                        rightController = model.getRightData(),
+                        stop = model.stop.get()!!,
+                        seekBarData = model.getSeekBarData()
+                    )
                 )
-            )
-            navigateBack.value = Unit
+                navigateBack.value = Unit
+            } else {
+                showSnack("Data is not correct!")
+            }
         } else {
             showSnack("Fill all data, please!")
         }

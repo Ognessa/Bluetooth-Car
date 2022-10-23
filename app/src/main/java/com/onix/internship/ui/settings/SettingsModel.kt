@@ -13,9 +13,11 @@ data class SettingsModel(
     val F_value: ObservableField<String> = ObservableField(""),
     val K_value: ObservableField<String> = ObservableField(""),
     val L_value: ObservableField<String> = ObservableField(""),
+    val stop: ObservableField<String> = ObservableField(""),
     val min_value: ObservableField<String> = ObservableField(""),
     val max_value: ObservableField<String> = ObservableField("")
 ) {
+
     fun checkDataIsNotEmpty(): Boolean {
         return !A_value.get().isNullOrEmpty() &&
                 !B_value.get().isNullOrEmpty() &&
@@ -25,8 +27,13 @@ data class SettingsModel(
                 !F_value.get().isNullOrEmpty() &&
                 !K_value.get().isNullOrEmpty() &&
                 !L_value.get().isNullOrEmpty() &&
+                !stop.get().isNullOrEmpty() &&
                 !min_value.get().isNullOrEmpty() &&
                 !max_value.get().isNullOrEmpty()
+    }
+
+    fun checkDataIsCorrect(): Boolean {
+        return max_value.get()?.toInt()!! > min_value.get()?.toInt()!!
     }
 
     fun getLeftData(): ControllerData {

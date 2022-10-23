@@ -144,11 +144,39 @@
                     android:text="@={model.l_value}" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/stop_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                app:layout_constraintTop_toBottomOf="@+id/controllerRightLayout">
+
+                <TextView
+                    android:id="@+id/stop_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:layout_weight="1"
+                    android:text="Stop signal"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/stop_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Stop value"
+                    android:text="@={model.stop}" />
+            </LinearLayout>
+
             <SeekBar
                 android:id="@+id/seekBar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_70"
+                android:layout_marginTop="@dimen/margin_40"
                 android:clickable="false"
                 android:max="10"
                 android:progress="3"
@@ -157,7 +185,7 @@
                 android:thumb="@drawable/seekbar_thumb"
                 app:layout_constraintEnd_toEndOf="@+id/controllerRightLayout"
                 app:layout_constraintStart_toStartOf="@+id/controllerRightLayout"
-                app:layout_constraintTop_toBottomOf="@+id/controllerRightLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/stop_container" />
 
             <LinearLayout
                 android:id="@+id/seekBarDataContainer"

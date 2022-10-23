@@ -43,6 +43,8 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment
             kValue.setText(data.rightController.cValue)
             lValue.setText(data.rightController.dValue)
 
+            stopInput.setText(data.stop)
+
             minValue.setText(data.seekBarData.minValue)
             maxValue.setText(data.seekBarData.maxValue)
         }

@@ -30,6 +30,7 @@ class DevicesFragment : BaseFragment<FragmentDevicesBinding>(R.layout.fragment_d
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupBluetoothAdapter()
+        binding.viewModel = viewModel
         val adapter = DeviceAdapter(
             deviceClick = {
                 Thread().run {
@@ -69,13 +70,12 @@ class DevicesFragment : BaseFragment<FragmentDevicesBinding>(R.layout.fragment_d
 
     private fun deviceConnect(device: BluetoothDevice) {
         var result: String
-
         try {
             socket = device.createRfcommSocketToServiceRecord(device.uuids[0].uuid)
-
             bluetoothAdapter.cancelDiscovery()
-            socket.connect()
+//            viewModel.loading(true)
 
+            socket.connect()
             bluetoothRepository.device = device
             bluetoothRepository.socket = socket
 
@@ -84,7 +84,7 @@ class DevicesFragment : BaseFragment<FragmentDevicesBinding>(R.layout.fragment_d
             e.printStackTrace()
             result = "Failed"
         }
-
+//        viewModel.loading(false)
         showSnack(result)
     }
 }
