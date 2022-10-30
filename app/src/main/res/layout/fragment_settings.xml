@@ -144,39 +144,36 @@
                     android:text="@={model.l_value}" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/stop_container"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/stop_title"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Stop signal"
                 android:layout_marginTop="@dimen/margin_10"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                app:layout_constraintTop_toBottomOf="@+id/controllerRightLayout">
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/stop_input"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/controllerRightLayout" />
 
-                <TextView
-                    android:id="@+id/stop_title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_5"
-                    android:layout_weight="1"
-                    android:text="Stop signal"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/stop_input"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="Stop value"
-                    android:text="@={model.stop}" />
-            </LinearLayout>
+            <EditText
+                android:id="@+id/stop_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Stop value"
+                android:text="@={model.stop}"
+                app:layout_constraintBottom_toBottomOf="@+id/stop_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/controllerLeftLayout"
+                app:layout_constraintTop_toBottomOf="@+id/controllerRightLayout" />
 
             <SeekBar
                 android:id="@+id/seekBar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_40"
+                android:layout_marginTop="@dimen/margin_50"
                 android:clickable="false"
                 android:max="10"
                 android:progress="3"
@@ -185,7 +182,7 @@
                 android:thumb="@drawable/seekbar_thumb"
                 app:layout_constraintEnd_toEndOf="@+id/controllerRightLayout"
                 app:layout_constraintStart_toStartOf="@+id/controllerRightLayout"
-                app:layout_constraintTop_toBottomOf="@+id/stop_container" />
+                app:layout_constraintTop_toBottomOf="@+id/stop_title" />
 
             <LinearLayout
                 android:id="@+id/seekBarDataContainer"
