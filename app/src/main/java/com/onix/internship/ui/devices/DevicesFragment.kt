@@ -1,7 +1,6 @@
 package com.onix.internship.ui.devices
 
 import android.bluetooth.BluetoothAdapter
-import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothManager
 import android.bluetooth.BluetoothSocket
 import android.content.Context
@@ -11,7 +10,9 @@ import android.view.View
 import com.onix.internship.R
 import com.onix.internship.arch.BaseFragment
 import com.onix.internship.arch.ext.navigateToPrevious
+import com.onix.internship.data.mapper.DeviceMapper
 import com.onix.internship.databinding.FragmentDevicesBinding
+import com.onix.internship.entity.bluetooth.Device
 import com.onix.internship.repository.BluetoothConnectedDeviceRepository
 import com.onix.internship.ui.devices.adapter.DeviceAdapter
 import org.koin.android.ext.android.inject
@@ -30,7 +31,9 @@ class DevicesFragment : BaseFragment<FragmentDevicesBinding>(R.layout.fragment_d
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupBluetoothAdapter()
+
         binding.viewModel = viewModel
+        val mapper = DeviceMapper(bluetoothRepository)
         val adapter = DeviceAdapter(
             deviceClick = {
                 Thread().run {
@@ -40,21 +43,24 @@ class DevicesFragment : BaseFragment<FragmentDevicesBinding>(R.layout.fragment_d
         )
 
         binding.bluetoothDevicesList.adapter = adapter
-        updateList(adapter)
+        updateList(adapter, mapper)
 
         binding.arrowBack.setOnClickListener {
             navigateToPrevious()
         }
 
         binding.swipeRefresh.setOnRefreshListener {
-            updateList(adapter)
+            updateList(adapter, mapper)
             binding.swipeRefresh.isRefreshing = false
         }
     }
 
-    private fun updateList(adapter: DeviceAdapter) {
+    private fun updateList(adapter: DeviceAdapter, mapper: DeviceMapper) {
         val list = bluetoothAdapter.bondedDevices.toList()
-        adapter.item = list
+        val newList = list.map {
+            mapper.map(it)
+        }
+        adapter.item = newList
     }
 
     private fun setupBluetoothAdapter() {
@@ -68,23 +74,34 @@ class DevicesFragment : BaseFragment<FragmentDevicesBinding>(R.layout.fragment_d
         }
     }
 
-    private fun deviceConnect(device: BluetoothDevice) {
+    private fun deviceConnect(device: Device) {
         var result: String
         try {
-            socket = device.createRfcommSocketToServiceRecord(device.uuids[0].uuid)
-            bluetoothAdapter.cancelDiscovery()
-//            viewModel.loading(true)
+            if (bluetoothRepository.isConnected() && bluetoothRepository.device == device) {
+                with(bluetoothRepository) {
+                    socket?.close()
+                    this.device = null
+                    socket = null
+                }
+                device.connected.set(false)
+                result = "Disconnected"
+            } else {
+                socket =
+                    device.deviceData.createRfcommSocketToServiceRecord(device.deviceData.uuids[0].uuid)
+                bluetoothAdapter.cancelDiscovery()
 
-            socket.connect()
-            bluetoothRepository.device = device
-            bluetoothRepository.socket = socket
+                socket.connect()
+                bluetoothRepository.device = device
+                bluetoothRepository.socket = socket
+                device.connected.set(true)
 
-            result = "Connected"
+                result = "Connected"
+            }
         } catch (e: Exception) {
             e.printStackTrace()
             result = "Failed"
         }
-//        viewModel.loading(false)
+
         showSnack(result)
     }
 }

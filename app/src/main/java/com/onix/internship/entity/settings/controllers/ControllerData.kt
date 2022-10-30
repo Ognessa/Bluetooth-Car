@@ -1,4 +1,4 @@
-package com.onix.internship.entity.controllers
+package com.onix.internship.entity.settings.controllers
 
 /**
  *   A

@@ -1,9 +1,9 @@
 package com.onix.internship.data.repository
 
 import android.content.Context
-import com.onix.internship.entity.SettingsDBData
-import com.onix.internship.entity.controllers.ControllerData
-import com.onix.internship.entity.controllers.SeekBarData
+import com.onix.internship.entity.settings.SettingsDBData
+import com.onix.internship.entity.settings.controllers.ControllerData
+import com.onix.internship.entity.settings.controllers.SeekBarData
 
 const val PREFS_FILE_NAME = "storage"
 

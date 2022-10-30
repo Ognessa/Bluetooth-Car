@@ -5,9 +5,11 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="data"
-            type="android.bluetooth.BluetoothDevice" />
+            type="com.onix.internship.entity.bluetooth.Device" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,7 +33,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@+id/bluetoothIcon"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/connectedIcon"
             app:layout_constraintStart_toEndOf="@+id/bluetoothIcon"
             app:layout_constraintTop_toTopOf="@+id/bluetoothIcon">
 
@@ -40,16 +42,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_5"
-                android:text="@{data.name}"
+                android:text="@{data.deviceData.name}"
                 tools:text="HC-05MAC" />
 
             <TextView
                 android:id="@+id/deviceMacAdress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{data.address}"
+                android:text="@{data.deviceData.address}"
                 tools:text="1C:52:16:52:9C:3C" />
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/connectedIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_connected"
+            android:visibility="@{(data.connected) ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

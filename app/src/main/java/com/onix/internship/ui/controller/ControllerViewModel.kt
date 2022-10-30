@@ -4,7 +4,7 @@ import android.view.MotionEvent
 import android.view.View
 import com.onix.internship.arch.BaseViewModel
 import com.onix.internship.data.repository.PreferenceStorage
-import com.onix.internship.entity.SettingsDBData
+import com.onix.internship.entity.settings.SettingsDBData
 import com.onix.internship.repository.BluetoothConnectedDeviceRepository
 
 class ControllerViewModel(

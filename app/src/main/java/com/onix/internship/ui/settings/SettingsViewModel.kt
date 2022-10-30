@@ -3,7 +3,7 @@ package com.onix.internship.ui.settings
 import com.onix.internship.arch.BaseViewModel
 import com.onix.internship.arch.lifecycle.SingleLiveEvent
 import com.onix.internship.data.repository.PreferenceStorage
-import com.onix.internship.entity.SettingsDBData
+import com.onix.internship.entity.settings.SettingsDBData
 
 class SettingsViewModel(
     private val preferences: PreferenceStorage

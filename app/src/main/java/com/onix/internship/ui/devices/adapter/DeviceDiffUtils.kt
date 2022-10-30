@@ -1,14 +1,14 @@
 package com.onix.internship.ui.devices.adapter
 
-import android.bluetooth.BluetoothDevice
 import androidx.recyclerview.widget.DiffUtil
+import com.onix.internship.entity.bluetooth.Device
 
-class DeviceDiffUtils : DiffUtil.ItemCallback<BluetoothDevice>() {
-    override fun areItemsTheSame(oldItem: BluetoothDevice, newItem: BluetoothDevice): Boolean {
-        return oldItem.address == newItem.address
+class DeviceDiffUtils : DiffUtil.ItemCallback<Device>() {
+    override fun areItemsTheSame(oldItem: Device, newItem: Device): Boolean {
+        return oldItem.deviceData.address == newItem.deviceData.address
     }
 
-    override fun areContentsTheSame(oldItem: BluetoothDevice, newItem: BluetoothDevice): Boolean {
-        return oldItem == newItem
+    override fun areContentsTheSame(oldItem: Device, newItem: Device): Boolean {
+        return oldItem.deviceData == newItem.deviceData
     }
 }

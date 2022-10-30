@@ -1,7 +1,7 @@
-package com.onix.internship.entity
+package com.onix.internship.entity.settings
 
-import com.onix.internship.entity.controllers.ControllerData
-import com.onix.internship.entity.controllers.SeekBarData
+import com.onix.internship.entity.settings.controllers.ControllerData
+import com.onix.internship.entity.settings.controllers.SeekBarData
 
 data class SettingsDBData(
     var leftController: ControllerData = ControllerData(),

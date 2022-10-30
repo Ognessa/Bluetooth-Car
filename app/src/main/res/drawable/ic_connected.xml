@@ -1,0 +1,10 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/bluetooth_icon_size"
+    android:height="@dimen/bluetooth_icon_size"
+    android:tint="@color/dark_purple"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@color/dark_purple"
+        android:pathData="M17,4h3v16h-3zM5,14h3v6L5,20zM11,9h3v11h-3z" />
+</vector>

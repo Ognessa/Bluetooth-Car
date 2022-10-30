@@ -1,8 +1,8 @@
 package com.onix.internship.ui.settings
 
 import androidx.databinding.ObservableField
-import com.onix.internship.entity.controllers.ControllerData
-import com.onix.internship.entity.controllers.SeekBarData
+import com.onix.internship.entity.settings.controllers.ControllerData
+import com.onix.internship.entity.settings.controllers.SeekBarData
 
 data class SettingsModel(
     val A_value: ObservableField<String> = ObservableField(""),

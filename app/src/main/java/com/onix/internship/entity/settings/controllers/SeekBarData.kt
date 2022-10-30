@@ -1,4 +1,4 @@
-package com.onix.internship.entity.controllers
+package com.onix.internship.entity.settings.controllers
 
 data class SeekBarData(
     val minValue: String = "0",
