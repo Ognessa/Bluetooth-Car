@@ -77,7 +77,7 @@ class DevicesFragment : BaseFragment<FragmentDevicesBinding>(R.layout.fragment_d
     private fun deviceConnect(device: Device) {
         var result: String
         try {
-            if (bluetoothRepository.isConnected() && bluetoothRepository.device == device) {
+            if (bluetoothRepository.isConnected(device.deviceData)) {
                 with(bluetoothRepository) {
                     socket?.close()
                     this.device = null

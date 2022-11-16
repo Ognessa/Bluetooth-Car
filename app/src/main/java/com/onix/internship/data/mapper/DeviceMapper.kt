@@ -13,7 +13,7 @@ class DeviceMapper(
     override fun map(from: BluetoothDevice): Device {
         return Device(
             deviceData = from,
-            connected = ObservableBoolean(repository.isConnected())
+            connected = ObservableBoolean(repository.isConnected(from))
         )
     }
 }
